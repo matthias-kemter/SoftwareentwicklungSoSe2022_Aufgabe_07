@@ -15,11 +15,33 @@ Sie setzen im Auftrag eines Kommunikationsdienstleisters einen neuen `Kommunikat
 | Konfiguration   | eingebundene Geräte                          |
 |-----------------|----------------------------------------------|
 | einzelnes Gerät | Auslösen eines Alarmklingelns, Lokalisierung | 
-| Gerätepaar      | Sprachanruf                                  |
+| Gerätepaar      | Sprachanruf, Textnachricht                   |
 
-Dabei soll die Logik des `Kommunikationskoordinators` Fehler abfangen, wenn zum Beispiel eine Nummer nicht bekannt ist, ein Gerät deaktiviert ist oder eine nicht unterstützte Version des Betriebssystems ausführt. 
+Dabei soll für die Logik des `Kommunikationskoordinators` folgende Regeln gelten:
 
-Da der Kunde Ihre Lösung nicht auf die realen Geräte seiner Nutzer "loslassen" möchte, werden Sie beauftragt die Leistungsfähigkeit des `Kommunikationskoordinator` zunächst in einer Simulationsumgebung zu zeigen. Diese liest Konfigurationsdateien ein und testet die angeführten Serviceanforderungen. In dieser Liste werden dann auch Serviceaufrufe realsiert, die einen Fehler generieren sollen (fehlendes Endgerät zu einer Rufnummer, ausgeschaltetes Gerät usw.) Der Kunde möchte am Ende eine Ergebnisliste erhalten, anhand derer die Funktionalität Ihrer Implementierung getestet werden kann. 
++ Sprachanrufe können nur realisiert werden, wenn das Gerät nicht stumm geschalten und online ist. Das Telefon antwortet im zweiten Fall mit einem Fehlercode.
++ Sprachanrufe, die eine Nummer adressieren, die nicht in der Liste der Geräte 
++ Textnachrichten werden zugestellt wenn das Gerät Online ist. Der Mechanismus funktioniert aber nur für das Betriebssystem `OS_A`.
++ das Alarmklingeln wird auf allen Geräten mit dem Betriebssystem `OS_B` ausgeführt, wennn sie online sind.
++ Lokalisierungen sind für nur für Smartphones möglich 
+
+Da der Kunde Ihre Lösung nicht auf die realen Geräte seiner Nutzer "loslassen" möchte, werden Sie beauftragt die Leistungsfähigkeit des `Kommunikationskoordinator` zunächst in einer Simulationsumgebung zu zeigen. Diese liest Konfigurationsdateien, die die verfügbaren Instanzen der Smartphones umfassen und testet die angeführten Serviceanforderungen. 
+
+Dafür sollen zwei Typen von Telefonen berücksichtigt werden, allgemeine Mobiltelefone und Smartphones. Nur Letztere unterstützen eine Methode `getPosition()`. 
+Ein erfolgreicher Service - Anruf, Textnachricht, Alarmklingeln, Positionsabfrage - werden auf dem Display des Mobiltelefons (der Konsole) angezeigt.
+
+| Membertyp   | Name                                                   | Type                    | Bemerkung                                 |
+|:----------- |:------------------------------------------------------ |:----------------------- | ----------------------------------------- |
+| Eigenschaft | `PhoneNumber`                                          | `string`                |                                           |
+|             | `PhoneState`                                           | `enum{normal, silent}`  | `silent` nur von Smartphones unterstützt! |
+|             | `ConnectionState`                                      | `enum{online, offline}` |                                           |
+| Methoden    | `receiveACall(string incommingNumber)`                 |                         |                                           |
+|             | `receiveAMessage(string incommingNumber, string text)` |                         |                                           |
+|             | `getPosition()`                                        |                         | Nur von Smartphones unterstützt!          | 
+|             | `getOS()`                                              |                         |                                           |
+
+Im Kommunikationskoordinator sind statische Informationen zu den Telefonen gespeichert - die Telefonnummer, das Betriebbsystem und der Verbindungsstatus (offline, online), alle Eigenschaften darüber hinaus müssen bei den simulierten Telefonen angefragt werden. 
+
 
 ``` 
                             +----------------------------------------+
@@ -31,15 +53,17 @@ Da der Kunde Ihre Lösung nicht auf die realen Geräte seiner Nutzer "loslassen"
                             +----------------------------------------+
                                                 |
                                                 v
- +----------------------+      +-----------------------------------+      +---------------+
- | SmartphoneData.csv   |      | MobilfunkSimulation               |      | Ergebnis.csv  |
- |  - Telefonnummer     |      |                                   |      | 1 erfolgreich |
- |  - Betriebssystem    | -->  |  +-----------------------------+  | -- > | 2 gescheitert |
- |  - Telefonstatus     |      |  | KommunikationsKoordinator   |  |      | 3 erfolgreich |
- |  - Verbindungsstatus |      |  |                             |  |      | 4 gescheitert |
- |  - Position          |      |  | SmartPhone Instanzen        |  |      +---------------+
- +----------------------+      |  +-----------------------------+  |
+ +----------------------+      +-----------------------------------+       +---------------+
+ | PhoneData.csv        |      | MobilfunkSimulation               |       | Ergebnis.csv  |
+ |  - Telefonnummer     |      |                                   |       | 1 erfolgreich |
+ |  - Betriebssystem    | -- > |  Liste mit Instanzen der Telefone |  -- > | 2 gescheitert |
+ |  - Telefonstatus     |      |  +-----------------------------+  |       | 3 erfolgreich |
+ |  - Verbindungsstatus |      |  | KommunikationsKoordinator   |  |       | 4 gescheitert |
+ |  - (Position)        |      |  |                             |  |       +---------------+
+ +----------------------+      |  | Liste BasisTelefonDaten     |  |
+                               |  +-----------------------------+  |
                                +-----------------------------------+
+                                                          
 ```
 
 Setzen Sie die Aufgabe in drei Stufen um: 
