@@ -1,0 +1,6 @@
+03231,OS_A,normal,online
+03232,OS_A,normal,offline
+02123,OS_B,normal,online,(54.3,12.5)
+02124,OS_B,silent,online,(54.3,12.5)
+02125,OS_B,silent,offline,(54.3,12.5)
+02234,OS_B,silent,online,(54.3,12.5)
