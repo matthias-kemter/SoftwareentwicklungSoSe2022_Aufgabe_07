@@ -59,9 +59,9 @@ Der Konfigurationssimulator:
  +---------------------------------------+      +-----------------------------------+       +---------------+
  | PhoneData.csv                         |      | MobilfunkSimulation               |       | Ergebnis.csv  |
  |  03231,OS_A,normal,online             |      |                                   |       | 1 erfolgreich |
- |  02234,OS_B,silent,online,(54.3,12.5) | -- > |  Liste der Tests                  |  -- > | 2 gescheitert |
+ |  02234,OS_B,silent,online, 54.3,12.5  | -- > |  Liste der Tests                  |  -- > | 2 gescheitert |
  |  03232,OS_A,normal,offline            |      |  +-----------------------------+  |       | 3 erfolgreich |
- | 02125,OS_B,silent,offline,(54.3,12.5) |      |  | KommunikationsKoordinator   |  |       | 4 gescheitert |
+ |  02125,OS_B,silent,offline, 54.3,12.5 |      |  | KommunikationsKoordinator   |  |       | 4 gescheitert |
  +---------------------------------------+      |  |        Liste der Telefone   |  |       +---------------+
                                                 |  +-----------------------------+  |
                                                 +-----------------------------------+
