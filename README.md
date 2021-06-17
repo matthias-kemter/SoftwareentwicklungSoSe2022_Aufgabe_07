@@ -4,7 +4,7 @@ Mit dem Aufgabenblatt sollen Ihre Fähigkeiten des objektorientierten Entwurf we
 
 ## Bearbeitungzeit
 
-SWE: ?? 2021 (Mm, BWM, ROB, BAI, BGIP, BBWL, BBL, MGIN)
+SWE: 21.6.- 2.7. 2021 (Mm, BWM, ROB, BAI, BGIP, BBWL, BBL, MGIN)
 
 
 ## Entwicklung einer Mobilfunkinfrastruktur
@@ -42,8 +42,8 @@ Ein erfolgreicher Service - Anruf, Textnachricht, Alarmklingeln, Positionsabfrag
 
 Der Konfigurationssimulator:
 
-+ soll die Datei (s. PhoneData.csv), die die Daten für die verfügbaren Geräte enthält, lesen und die Liste der Geräte-Instanzen erstellen.   
-+ Weiterhin erhält der Kommunikationskoordinator eine Liste der Tests, die ebenfalls in einer Datei zur Verfügung gestellt werden (ServicesTests.csv).
++ soll die Datei [SmartPhoneData](https://github.com/ComputerScienceLecturesTUBAF/SoftwareentwicklungSoSe2021_Aufgabe_07/blob/main/SmartPhoneData.csv), die die Daten für die verfügbaren Geräte enthält, lesen und die Liste der Geräte-Instanzen erstellen.   
++ Weiterhin erhält der Kommunikationskoordinator eine Liste der Tests, die ebenfalls in einer Datei zur Verfügung gestellt werden ([ServicesTests.csv](https://github.com/ComputerScienceLecturesTUBAF/SoftwareentwicklungSoSe2021_Aufgabe_07/blob/main/ServicesTests.csv)).
 + Kommunikationskoordinator testet die Serviceanforderungen, in dem er die in den Tests genannten Methoden in speziellen Testmethoden aufruft. Dabei wird überprüft, ob die entsprechenden Rahmenbedigungen erfüllt sind. Die Ergebnisse des Testens werden in der weiteren Datei (Ergebnis.csv) protokolliert.
 
 ```
@@ -57,7 +57,7 @@ Der Konfigurationssimulator:
                                                               |
                                                               v
  +---------------------------------------+      +-----------------------------------+       +---------------+
- | PhoneData.csv                         |      | MobilfunkSimulation               |       | Ergebnis.csv  |
+ | SmartPhoneData.csv                    |      | MobilfunkSimulation               |       | Ergebnis.csv  |
  |  03231,OS_A,normal,online             |      |                                   |       | 1 erfolgreich |
  |  02234,OS_B,silent,online, 54.3,12.5  | -- > |  Liste der Tests                  |  -- > | 2 gescheitert |
  |  03232,OS_A,normal,offline            |      |  +-----------------------------+  |       | 3 erfolgreich |
@@ -72,9 +72,9 @@ Setzen Sie die Aufgabe in drei Stufen um:
 
 1. Dafür entwirft zunächst der Senior Developer (und Projekt Maintainer) eine Klassenstruktur in UML mit PlantUML. Legen Sie das Diagramm als Bild im Issue "UML_Modell" ab, diskutieren Sie den Entwurf mit Ihrem Partner und verfeinern Sie diesen ggf.
 2. Teilen Sie sich die Aufgaben auf ordnen Sie diese in Issues zu und implementieren Sie diese.
-3. Der Senior Developer entwirft variierende Implementierungen von `ServicesTests.csv` und `PhoneData.csv` und tauscht diese ggf. mit anderen Teams aus. Beide prüfen in den jeweiligen Verantwortlichkeiten, die Korrektheit der Ergebnisse und bessern ggf. nach.
+3. Der Senior Developer entwirft variierende Implementierungen von `ServicesTests.csv` und `SmartPhoneData.csv` und tauscht diese ggf. mit anderen Teams aus. Beide prüfen in den jeweiligen Verantwortlichkeiten, die Korrektheit der Ergebnisse und bessern ggf. nach.
 
 ## Hilfen
 
-+ Die beispielhafte Dateien für PhoneData.csv und ServicesTests.csv finden sich in Projektordner.
++ Die beispielhafte Dateien für SmartPhoneData.csv und ServicesTests.csv finden sich in Projektordner.
 + Das Einlesen von csv Inhalten wird in [DeserializationInCsharp](https://www.youtube.com/watch?v=kuOb8_U2jzE) erläutert.
