@@ -1,4 +1,4 @@
-# Softwareentwicklung SoSe2021 - Aufgabe 06
+# Softwareentwicklung SoSe2021 - Aufgabe 07
 
 Mit dem Aufgabenblatt sollen Ihre Fähigkeiten des objektorientierten Entwurf weiter trainiert werden. Thematisiert wird außerdem das Testen der Entwurf realisiernden  Implementierung.
 
@@ -20,9 +20,9 @@ Bei der Realisierung der Services soll dabei eine Reihe Regeln gelten, z.B.:
 
 + Sprachanrufe können nur ausgelöst werden, wenn das Gerät `online` ist.
 + Sprachanrufe werden nur entgegengenommen werden, wenn das Gerät nicht stumm geschalten (Status `normal`) und `online` ist.
-+ Textnachrichten können generell nur an Geräte mit dem Betriebsystem `OS_A` verschickt werden, und nur dann, wenn sie online sind `online` ist.
++ Textnachrichten können generell nur an Geräte mit dem Betriebsystem `OS_A` verschickt werden, und nur dann, wenn sie `online` sind.
 + das Alarmklingeln wird nur auf Geräten mit dem Betriebssystem `OS_B` ausgeführt.
-+ Lokalisierungen sind für nur für Smartphones möglich.
++ Lokalisierungen sind nur für Smartphones möglich.
 
 Da der Kunde Ihre Lösung nicht auf die realen Geräte seiner Nutzer "loslassen" möchte, werden Sie beauftragt die Leistungsfähigkeit des Kommunikationskoordinator zunächst in einer Simulationsumgebung zu zeigen.
 
