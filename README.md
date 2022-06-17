@@ -1,10 +1,10 @@
-# Softwareentwicklung SoSe2021 - Aufgabe 07
+# Softwareentwicklung SoSe2022 - Aufgabe 07
 
 Mit dem Aufgabenblatt sollen Ihre Fähigkeiten des objektorientierten Entwurf weiter trainiert werden. Thematisiert wird außerdem das Testen der Entwurf realisiernden  Implementierung.
 
 ## Bearbeitungzeit
 
-SWE: 21.6.- 2.7. 2021 (Mm, BWM, ROB, BAI, BGIP, BBWL, BBL, MGIN)
+SWE: 20.6.- 1.7. 2022 (Mm, BWM, ROB, BAI, BGIP, BBWL, BBL, MGIN)
 
 
 ## Entwicklung einer Mobilfunkinfrastruktur
